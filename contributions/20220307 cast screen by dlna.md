@@ -44,7 +44,7 @@ dlna play -d 上一步的url http://你的lan ip(不是localhost):9999/cgi-bin/s
 稍等片刻 视频就会出现在电视上了
 
 
--
+
 By 一个普通的深圳初中生
 
 ------
