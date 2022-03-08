@@ -88,9 +88,9 @@ dlna device
 ```
 => Device 1:
 {
-    "location": "http://192.168.3.39:1490/",
-    "host": "192.168.3.39",
-    "friendly_name": "ltepuffer1c",
+    "location": "http://192.168.3.118:1528/",
+    "host": "192.168.3.118",
+    "friendly_name": "Kodi",
 ...
 
 ```
@@ -127,7 +127,7 @@ dlna play -d <URL> http://<局域网 IP>:9999/cgi-bin/screen.flv
  
 请相应替换其中的 `<URL>` 和 `<局域网 IP>` 参数，此处我替换后的命令是：
 ```
-dlna play  -d http://192.168.3.118:1528/ http://192.168.3.117:9999/cgi-bin/screen.ts
+dlna play -d http://192.168.3.118:1528/ http://192.168.3.117:9999/cgi-bin/screen.flv
 ```
 
 然后在电视上设置接受投屏，各种电视设备设置投屏方式不同，请参照具体设备说明。
