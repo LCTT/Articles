@@ -121,8 +121,7 @@ ip addr
 ```
 启动投屏方式如下：
 
-
-
+```
 dlna play -d <URL> http://<局域网 IP>:9999/cgi-bin/screen.flv
 ```
 
