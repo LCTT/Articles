@@ -17,27 +17,26 @@
 pip3 install dlna
 ```
 
-然后用 `pactl` 查找“监视器信源”：
+然后用 `pactl` 查找"监视器信源" 或 "Monitor Source"：
 
 ```
 pactl list sinks
 ```
 如
-```
-信宿 #0
-	状态：RUNNING
-	名称：alsa_output.pci-0000_05_00.6.HiFi__hw_Generic_1__sink
-	描述：Family 17h (Models 10h-1fh) HD Audio Controller Speaker + Headphones
-	驱动程序：module-alsa-card.c
-	采样规格：s16le 2ch 44100Hz
-	声道映射：front-left,front-right
-	所有者模块：9
-	静音：否
-	音量：front-left: 53814 /  82% / -5.14 dB,   front-right: 53814 /  82% / -5.14 dB
-	        平衡 0.00
-	基础音量：65536 / 100% / 0.00 dB
-	监视器信源：alsa_output.pci-0000_05_00.6.HiFi__hw_Generic_1__sink.monitor
-	延迟：14738 微秒，设置为 16000 微秒
+```Sink #0
+	State: RUNNING
+	Name: alsa_output.pci-0000_05_00.6.HiFi__hw_Generic_1__sink
+	Description: Family 17h (Models 10h-1fh) HD Audio Controller Speaker + Headphones
+	Driver: module-alsa-card.c
+	Sample Specification: s16le 2ch 44100Hz
+	Channel Map: front-left,front-right
+	Owner Module: 9
+	Mute: no
+	Volume: front-left: 53814 /  82% / -5.14 dB,   front-right: 53814 /  82% / -5.14 dB
+	        balance 0.00
+	Base Volume: 65536 / 100% / 0.00 dB
+	Monitor Source: alsa_output.pci-0000_05_00.6.HiFi__hw_Generic_1__sink.monitor
+	Latency: 16676 usec, configured 16000 us...
 
 ```
 
