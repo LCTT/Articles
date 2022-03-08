@@ -22,8 +22,25 @@ pip3 install dlna
 ```
 pactl list sinks
 ```
+如
+```
+信宿 #0
+	状态：RUNNING
+	名称：alsa_output.pci-0000_05_00.6.HiFi__hw_Generic_1__sink
+	描述：Family 17h (Models 10h-1fh) HD Audio Controller Speaker + Headphones
+	驱动程序：module-alsa-card.c
+	采样规格：s16le 2ch 44100Hz
+	声道映射：front-left,front-right
+	所有者模块：9
+	静音：否
+	音量：front-left: 53814 /  82% / -5.14 dB,   front-right: 53814 /  82% / -5.14 dB
+	        平衡 0.00
+	基础音量：65536 / 100% / 0.00 dB
+	监视器信源：alsa_output.pci-0000_05_00.6.HiFi__hw_Generic_1__sink.monitor
+	延迟：14738 微秒，设置为 16000 微秒
 
-// 请在此处给出一个示例输出。
+```
+
 
 然后创建一个 CGI 脚本 `screen.flv`，首先是建立放置该脚本的目录：
 
@@ -60,7 +77,7 @@ chmod +x screencast/cgi-bin/screen.flv
 
 ```
 cd screencast
-python3 -m http.server --cgi 9999
+python3 -m http.server --cgi 9999&
 ```
 
 然后，找到你的 DLNA 设备，然后把 `location` 后面的 URL 复制下来：
@@ -68,26 +85,52 @@ python3 -m http.server --cgi 9999
 ```
 dlna device
 ```
+如
+```
+=> Device 1:
+{
+    "location": "http://192.168.3.39:1490/",
+    "host": "192.168.3.39",
+    "friendly_name": "ltepuffer1c",
+...
 
-// 请在此处给出一个示例输出
+```
 
 找到你的 Linux 电脑的局域网 IP 地址：
 
 ```
 ip addr
 ```
-
-// 请在此处给出一个示例输出
-
+如
+```
+3: wlp2s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 74:4c:a1:82:2e:3f brd ff:ff:ff:ff:ff:ff
+    inet 192.168.3.117/24 brd 192.168.3.255 scope global dynamic noprefixroute wlp2s0
+       valid_lft 58283sec preferred_lft 58283sec
+    inet6 240e:3b3:2ee3:9530:d005:e492:6243:9/128 scope global dynamic noprefixroute 
+       valid_lft 6738sec preferred_lft 3138sec
+    inet6 240e:3b3:2ee3:9539:f289:6043:c56a:4e7b/64 scope global dynamic noprefixroute 
+       valid_lft 7189sec preferred_lft 3589sec
+    inet6 240e:3b3:2ee3:9539:3714:eaf0:c549:b8c9/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 7188sec preferred_lft 3588sec
+    inet6 fe80::c746:2540:ab7b:20aa/64 scope link 
+       valid_lft forever preferred_lft forever
+    inet6 fe80::3543:2637:e0fc:3630/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+`
+```
 启动投屏方式如下：
 
-```
+
+
 dlna play -d <URL> http://<局域网 IP>:9999/cgi-bin/screen.flv
 ```
 
+ 
 请相应替换其中的 `<URL>` 和 `<局域网 IP>` 参数，此处我替换后的命令是：
-
-// 请在此处给出替换后的命令
+```
+dlna play  -d http://192.168.3.118:1528/ http://192.168.3.117:9999/cgi-bin/screen.ts
+```
 
 然后在电视上设置接受投屏，各种电视设备设置投屏方式不同，请参照具体设备说明。
 
