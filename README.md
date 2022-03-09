@@ -15,7 +15,7 @@ Linux 中国公开投稿计划
 
 ### 投稿方式
 
-请按照模板创造你的稿件，默认模板为：`templates/article.md`。
+请按照模板创造你的稿件，默认模板为：[templates/article.md](https://raw.githubusercontent.com/LCTT/Articles/master/templates/article.md)。
 
 - 稿件接受 Markdown 格式
 - 投稿文件名格式：“日期 英文标题.md”，例如：`20220222 How To Make Live.md`
