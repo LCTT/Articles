@@ -1,11 +1,10 @@
 [//]: # (这种格式是注释，提交时可删除)
-[//]: # (以下元信息是必须填写的)
+[//]: # (以下元信息是必须填写和保留的)
 [#]: subject: "文章标题，不超过 60 个字"
 [#]: via: "来源链接，如本文有更早发布地址"
 [#]: author: "作者名 作者的个人页/邮件地址/其它联系方式"
 [#]: keywords: "多个关键字，以空格分割开"
 [#]: url: "发布后链接，由发布人填写"
-
 [//]: # (投稿采用 Markdown 格式)
 [//]: # (投稿文件名格式：“日期 英文标题.md”，例如：`20220222 How To Make Live.md`)
 [//]: # (投稿请发送拉取请求到 `contributions` 目录，标题为文件名)
@@ -47,14 +46,18 @@
 
 总结该文章。
 
+---
+
+作者简介：
+
 ------
 
 via: https://来.源/链/接
 
 作者：[作者名](https://作.者/链/接)
-审核：[wxy](https://github.com/wxy)
+编辑：[wxy](https://github.com/wxy)
 
-本文由贡献者投稿，采用 [CC-BY-SA 协议](https://creativecommons.org/licenses/by-sa/4.0/deed.zh) 发布，[Linux中国](https://linux.cn/) 荣誉推出
+本文由贡献者投稿至 [Linux 中国公开投稿计划](https://github.com/LCTT/Articles/)，采用 [CC-BY-SA 协议](https://creativecommons.org/licenses/by-sa/4.0/deed.zh) 发布，[Linux中国](https://linux.cn/) 荣誉推出
 
 [1]: images/img001.png
 [2]: 文内链接
