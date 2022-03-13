@@ -1,79 +1,75 @@
 [#]: subject: "怎么开始你的第一次打包？"
-[#]: author: "PokerFace128 https://github.com/pokerface128"
-[#]: keywords: "打包 deb"
-[#]: url: " "
+[#]: author: "PokerFace128  GitHub https://github.com/pokerface128"
 
 # 怎么开始你的第一次打包？
 
- > 太复杂的包咱们打不来，咱们先从最简单的壁纸包开始打起。
+ >太复杂的包咱们打不来，咱们先从最简单的壁纸包开始打起。
 
 ![](https://s3.bmp.ovh/imgs/2022/03/349fee489f974553.png)
 
-“<ruby>打包<rt>packing</rt></ruby>” 是什么？在 Linux 语境中，“打包”是指制作可以在 Linux 上用软件包管理器来安装、更新和卸载的软件包。
+你肯定要问了，什么要打包？你肯定拍过一些照片并且将它们设置为壁纸的经历对吧。一个个放上去挺累的对吧。把这些收集起来，打成一个壁纸包，与其他人分享是个不错的选择。也对Debian的软件包有个大致的了解。
 
-你肯定要问了，什么要打包？举例来说，你肯定有过拍一些照片并且将它们设置为壁纸的经历，对吧。一个个传到计算机上去挺累的。把这些收集起来，打成一个壁纸包，与其他人分享是个不错的选择。顺便，通过打包，也可以对 Debian 的软件包有个大致的了解。
-
-### 背景介绍
+### 背景介绍：
 
 ![](https://ftp.bmp.ovh/imgs/2019/09/3101e88de6e8b45a.jpg)
 
-《崩坏 3》，是一个我很喜欢玩的游戏，但它不支持 Linux 平台，所以，望梅止渴的我只好把这些壁纸进行打包，以此纪念和女武神们并肩战斗过的时光。
+崩坏3，一个我很喜欢玩的游戏。但它们不支持Linux平台。我只好把这些壁纸进行打包，以此纪念和女武神们并肩战斗过的时光。当然咱们打的壁纸包是给Debian/Ubuntu系所用的deb包，其他系或独立发行版请按所属发行版的官方手册进行打包。
 
-本文中介绍的打包是给 Debian/Ubuntu 系所用的 deb 包，其他系或独立发行版请按所属发行版的官方手册进行打包工作。
+### 咱们开始准备工作吧
 
-### 准备工作
+先准备如下工具：
 
-先准备如下工具 `wget`、`tar`、`dh-make`、`debmake`、`lintian`（有一些应该在你 Linux 上已经安装过了）：
-
+wget  tar dh-make debmake lintian
 ```
-~ $ sudo apt install wget tar dh-make debmake lintian
+$ sudo apt install wget tar dh-make debmake lintian
 ```
-
-我建立了工作文件夹 `/home/user/Documents/make`（你可以根据你的喜好在任何文件夹进行打包工作）：
-
-然后，在其下建立打包文件夹：
-
+先建立文件夹
 ```
-~ $ cd /home/user/Documents/make
-make $ mkdir -p honkai-impact3-0.1/usr/share/background/honkai-impact3
+$ mkdir -p honkai-impact3-0.1/usr/share/background/honkai-impact3`
 ```
+更换壁纸的时候你应该注意到了，通常壁纸的存放位置都是在 background 这。
 
-更换壁纸的时候你应该注意到了，通常壁纸的存放位置都是在 `/usr/share/background` 目录里的，所以这里建立了相应的多级目录。
+你也可以用你手里的照片来打包。演示图片均来自于崩坏3官网。
 
-你也可以用你自己拍摄的照片来打包，本文所用的演示图片均来自于《崩坏 3》官网，你可以自行下载。
+由于我觉得一个个下载太累了，于是乎就写了个脚本来批量下壁纸。
+```
+#!/bin/sh
+echo 一次牛逼的攻击
+wget -c https://x/01.jpg
+# 考虑到不必要的流量，请自行替换为你需要的url。
+```
+就这样壁纸就很快下好了。
 
 ![](https://s3.bmp.ovh/imgs/2022/03/5fd5926b55fa0862.png)
 
-### 开始打包
+#### 就这样开始打包吧
 
-然后，退回到工作目录里，将存放壁纸的目录压缩成一个 tar 包：
-
-```
-honkai-impact3-0.1 $ cd ..
-make $ tar -cvzf honkai-impact3-0.1.tar.gz honkai-impact3-0.1/usr/share/background/honkai-impact3
-```
-
-压缩包创建好之后，我们还得设置两个变量，这样软件包维护工具就可以正确识别维护者信息了：
+然后 退回到上一个目录里进行打包
 
 ```
-make $ cat >> ~/.bashrc <<EOF
+$ cd ..
+$ tar -cvzf honkai-impact3-0.1.tar.gz honkai-impact3-0.1/usr/share/background/honkai-impact3
+```
+
+压缩包就这样打好了。但还没完。
+
+我们还得设置两个变量，这样维护工具就可以正确识别维护者信息了。
+```
+$ cat >> ~/.bashrc <<EOF
 DEBEMAIL="bronya_zaychik@st_freya_academy.edu"
 DEBFULLNAME="Bronya Zaychik"
 export DEBEMAIL DEBFULLNAME
 EOF
-make $ . ~/.bashrc
+$ . ~/.bashrc
 ```
+DEBEMAIL 写你的邮箱地址
+DEBFULLNAME 写你维护者的名字
 
-此处：
-
-- `DEBEMAIL` 写你的邮箱地址
-- `DEBFULLNAME` 写维护者的名字
-
-### 初始化
+#### 初始化软件包 
 
 ```
-make $ cd honkai-impact3-0.1 
-honkai-impact3-0.1 $ dh_make -f ../honkai-impact3-0.1.tar.gz
+$ cd honkai-impact3-0.1 
+$ dh_make -f ../honkai-impact3-0.1.tar.gz
 Type of package: (single, indep, library, python)
 [s/i/l/p]?
 Maintainer Name     : Bronya Zaychik
@@ -84,25 +80,29 @@ Version             : 0.1
 License             : blank
 Package Type        : library
 Are the details correct? [Y/n/q]
-```
-
-`dh_make` 是个不错的工具，这工具用于初始化压缩包并生成模板文件。下面的 `debian` 文件夹就是用这个工具生成的。
-
-在初始化完成之后，你会看到如下文件：
 
 ```
-honkai-impact3-0.1 $ ls -F ../
+
+dh_make是个不错的工具，这工具用于初始化压缩包并生成模板文件。下面的Debian文件夹就是用这工具生成（因读者吐槽，特此补上这段。）
+
+在初始化完成之后，你会看到如下文件
+
+```
+$ ls -f ../
 honkai-impact3-0.1/
+honkai-impact3-0.1/debian
 honkai-impact3-0.1.tar.gz
 honkai-impact3_0.1.orig.tar.gz
-honkai-impact3-0.1 $ ls -F
-honkai-impact3-0.1/debian
 ```
-
-而 `debian` 文件夹里有了很多模板文件，在一阵怒砍之后，只留下如下文件：
-
+此处为上一个目录所示的样子，因读者二次吐槽，再加注释。
 ```
-honkai-impact3-0.1 $ ls debian
+$ ls -F
+debian/ usr/
+```
+此处为 honkai-impact3-0.1/ 时的样子
+而debian文件夹里却有了很多模板文件，在一阵怒砍之后，只留下如下文件。
+```
+$ ls -F debian/
 source/
 changelog
 control
@@ -110,14 +110,9 @@ copyright
 rules
 ```
 
-其中，`changlog` 文件是用来记录版本更新内容的变更日志。
+changlog 是用来记录版本更新内容
 
-例如：
-
-```
-honkai-impact3-0.1 $ cat debian/changelog
-```
-
+例如这样：
 ```
 honkai-impact3-background (0.1-1) unstable; urgency=medium
 
@@ -131,13 +126,10 @@ honkai-impact3-background (0.1-1) unstable; urgency=medium
   * Initial release 
 
  -- Bronya Zaychik <bronya_zaychik@st_freya_academy.edu> Wed, 02 Feb 2022 07:00:28 +0000
-```
-
-`control` 文件用来记录壁纸包的版本信息：
 
 ```
-honkai-impact3-0.1 $ cat debian/control
-```
+
+control  壁纸包的版本信息
 
 ```
 Package: honkai-impact3-background
@@ -151,33 +143,33 @@ Description: This is the game wallpaper of the HokaiImpact3.
  TECH OTAKUS SAVE THE WORLD
 ```
 
-说明如下：
+第1-2行是包名和版本号
+第3行是可以编译本二进制包的体系结构，通常文本、图像、或解释型语言脚本 生成的二进制包都用 Architecture: all
+第4行是维护者信息
+第5行是分类，这里我们选择为x11  x11 为不属于其他分类的为 X11 程序
+第6行是优先级，这个为常规优先级。
+第7行是你的个人主页，GitHub、Gitee，甚至是你的BiliBili主页都可以。
+第8行是对这个软件包的描述 
+第9行建议写点什么上去，这样在用 lintian 检查的时候就不会空了。
 
-- 第 1-2 行是包名和版本号
-- 第 3 行是可以编译该二进制包的体系结构，通常文本、图像、或解释型语言脚本所生成的二进制包都用 `Architecture: all`
-- 第 4 行是维护者信息
-- 第 5 行是分类，这里我们选择为 `x11`，这是不属于其他分类的为 X11 程序
-- 第 6 行是优先级，这个为常规优先级。
-- 第 7 行是维护者的个人主页，GitHub、Gitee，甚至是你的 BiliBili 主页都可以。
-- 第 8 行是对这个软件包的描述 
-- 第 9 行建议写点什么上去，这样在用 `lintian` 检查的时候就不会空了。
+copyright 版权信息
 
-最后是 `copyright` 文件，用来存放版权信息。就是该软件包内文件的版权说明。至于这个示例壁纸包，由于版权属于该游戏出品方，作为演示用途，我这里就没填。
+额，版权这事我还在想办法联系米哈游。所以就为什么就没填。
 
-### 开始打包
+#### 开始打包
 
-只需一个命令，就可轻松打包：
-
-```
-honkai-impact3-0.1 $ dpkg-buildpackage -us -uc
-```
-
-你应该用过 `dpkg -i` 这条命令，`dpkg` 工具不只能安装，还能打包和拆包。
-
-啪的一下，一个壁纸包就这样打好了：
+只需一个命令，就可轻松打包。
 
 ```
-honkai-impact3-0.1 $ ls -F ../
+$ dpkg-buildpackage -us -uc
+```
+
+你应该用过 dpkg -i 这条命令对吧，dpkg这工具不只能安装，还能打包和拆包。
+
+啪的一下，很快啊。一个壁纸包就这样打好了。
+
+```
+$ ls -F ../
 honkai-impact3-0.1/                   
 honkai-impact3_0.1-1_amd64.changes  
 honkai-impact3_0.1-1.debian.tar.xz  
@@ -186,38 +178,84 @@ honkai-impact3_0.1-1_amd64.buildinfo
 honkai-impact3_0.1-1_amd64.deb      
 honkai-impact3_0.1-1.dsc            
 honkai-impact3-0.1.tar.gz
-...
 ```
 
-创建好的软件包名称为 `honkai-impact3_0.1-1_amd64.deb`。
-
-接下来用 `lintian` 检查软件包是否合格：
+接下来用 lintian 检查
 
 ```
-$ lintian ../honkai-impact3_0.1-1_amd64.deb   
+$ lintian honkai-impact3_0.1-1_amd64.deb   
 
 E: honkai-impact3-background: copyright-contains-dh_make-todo-boilerplate
 E: honkai-impact3-background: helper-templates-in-copyright
 W: honkai-impact3-background: copyright-has-url-from-dh_make-boilerplate
+
 ```
  
-这里显示我没填 `copyright` 文件，这里需要你填入版权信息，像壁纸类的话，通常都是 CC 协议。
+ 这里显示我没填copyright文件，这里需要你填入版权信息，像壁纸类的话，通常都是CC协议。不过，我不确定这壁纸能否用于CC协议，还得接着联系米哈游。
  
-打包好之后就像这样：
+ 打包好之后就像这样
  
-![](https://s3.bmp.ovh/imgs/2022/03/349fee489f974553.png)
+ ![](https://s3.bmp.ovh/imgs/2022/03/349fee489f974553.png)
  
-如果你想了解关于 deb 打包的更多内容，请看如下链接：https://www.debian.org/doc/manuals/maint-guide/index.zh-cn.html
+ 如果你想了解关于deb打包的更多内容，请看如下链接。
  
----
+ via：https://www.debian.org/doc/manuals/maint-guide/index.zh-cn.html
+ 
+ ---
+ 作者简介：
+ 
+ PokerFace，一个会空中劈叉的老舰长（睿智清洁工）。
+ ------
+ 
+ ---
+ 因读者再次吐槽，特意加上如下注释。
+ 读者吐槽如下
+ 请参考如下：
 
-作者简介：
- 
-PokerFace，一个会空中劈叉的老舰长（睿智清洁工）。
+- 我整理了你的目录层次结构，并将当前目录放到提示符中，以便读者可以清晰了解所在位置。请看我的目录梳理是否存在错误。
+- 你这里在 `honkai-impact3_0.1` 目录反复跳转，我不明白你的意思。我认为该目录只在打包成 tar 时有用。之后的一系列的打包命令都在你的 `make` 目录进行就行，`debian` 目录和 tar 包都放在 `make` 下就行，原来存放壁纸的目录 `honkai-impact3_0.1` 在创建 tar 后就不需要了。如果是这样，也不用多次进行 `../` 操作了。是否如此？
 
-------
+我的解释如下：
+当时我的目录是长这样滴：
+  ``` 
+ $ ls
+ $ honkai-impact3_0.1 honkai-impact3-0.1.tar.gz bh.sh
+```
 
-作者：[PokerFace](https://github.com/pokerface128)
-编辑：[wxy](https://github.com/wxy)
+为了方便演示，特意把脚本文件给隐去了。
+```
+$ ls -F
+$ honkai-impact3_0.1/ honkai-impact3-0.1.tar.gz bh.sh
+```
+-F 所指的是文件夹。
 
-本文由贡献者投稿至 [Linux 中国公开投稿计划](https://github.com/LCTT/Articles/)，采用 [CC-BY-SA 协议](https://creativecommons.org/licenses/by-sa/4.0/deed.zh) 发布，[Linux中国](https://linux.cn/) 荣誉推出
+```
+$ ls -f ../
+honkai-impact3-0.1/
+honkai-impact3-0.1/debian
+honkai-impact3-0.1.tar.gz
+honkai-impact3_0.1.orig.tar.gz
+```
+这部分怪我没写清 ，当时我想展示的上一层目录的结构。因读者说我没讲 honkai-impact3-0.1/ 里面的目录，所以第二版也就加了 debian/ 目录，当然，这个方法是错的。你在展示上一层目录的时候，是没法显示下一层目录的。
+所以，完整的目录如下：
+```
+$ ls -f ../
+honkai-impact3-0.1/
+honkai-impact3-0.1.tar.gz
+honkai-impact3_0.1.orig.tar.gz
+```
+```
+$ cd honkai-impact3-0.1/
+honkai-impact3-0.1 $ ls -F
+$ debian/ usr/
+$ ls -F debian/
+source/
+changelog
+control
+copyright
+rules
+# 此处咱们还是在 honkai-impact3-0.1/ 里
+$ ls -F usr/
+$ share/
+```
+这就是为什么我故意留坑，让用户自己去观察和思考。而不是保姆级教程。虽然我也很想去做保姆级教程，但用户都被Windows给惯坏了。用户习惯几乎一团糟。我为什么老是被队友坑
