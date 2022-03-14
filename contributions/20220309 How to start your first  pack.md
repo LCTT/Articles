@@ -85,24 +85,18 @@ Are the details correct? [Y/n/q]
 
 dh_make是个不错的工具，这工具用于初始化压缩包并生成模板文件。下面的Debian文件夹就是用这工具生成（因读者吐槽，特此补上这段。）
 
-在初始化完成之后，你会看到如下文件
+在初始化完成之后，然后返回来，你会看到如下文件
 
 ```
-$ ls -f ../
+$ cd ..
+$ ls -F
 honkai-impact3-0.1/
-honkai-impact3-0.1/debian
 honkai-impact3-0.1.tar.gz
 honkai-impact3_0.1.orig.tar.gz
 ```
-此处为上一个目录所示的样子，因读者二次吐槽，再加注释。
-```
-$ ls -F
-debian/ usr/
-```
-此处为 honkai-impact3-0.1/ 时的样子
 而debian文件夹里却有了很多模板文件，在一阵怒砍之后，只留下如下文件。
 ```
-$ ls -F debian/
+$ ls -F honkai-impact3-0.1/debian/
 source/
 changelog
 control
@@ -161,6 +155,7 @@ copyright 版权信息
 只需一个命令，就可轻松打包。
 
 ```
+$ cd honkai-impact3-0.1/
 $ dpkg-buildpackage -us -uc
 ```
 
@@ -169,7 +164,8 @@ $ dpkg-buildpackage -us -uc
 啪的一下，很快啊。一个壁纸包就这样打好了。
 
 ```
-$ ls -F ../
+$ cd ../
+$ ls -F 
 honkai-impact3-0.1/                   
 honkai-impact3_0.1-1_amd64.changes  
 honkai-impact3_0.1-1.debian.tar.xz  
@@ -208,54 +204,4 @@ W: honkai-impact3-background: copyright-has-url-from-dh_make-boilerplate
  ------
  
  ---
- 因读者再次吐槽，特意加上如下注释。
- 读者吐槽如下
- 请参考如下：
-
-- 我整理了你的目录层次结构，并将当前目录放到提示符中，以便读者可以清晰了解所在位置。请看我的目录梳理是否存在错误。
-- 你这里在 `honkai-impact3_0.1` 目录反复跳转，我不明白你的意思。我认为该目录只在打包成 tar 时有用。之后的一系列的打包命令都在你的 `make` 目录进行就行，`debian` 目录和 tar 包都放在 `make` 下就行，原来存放壁纸的目录 `honkai-impact3_0.1` 在创建 tar 后就不需要了。如果是这样，也不用多次进行 `../` 操作了。是否如此？
-
-我的解释如下：
-当时我的目录是长这样滴：
-  ``` 
- $ ls
- $ honkai-impact3_0.1 honkai-impact3-0.1.tar.gz bh.sh
-```
-
-为了方便演示，特意把脚本文件给隐去了。
-```
-$ ls -F
-$ honkai-impact3_0.1/ honkai-impact3-0.1.tar.gz bh.sh
-```
--F 所指的是文件夹。
-
-```
-$ ls -f ../
-honkai-impact3-0.1/
-honkai-impact3-0.1/debian
-honkai-impact3-0.1.tar.gz
-honkai-impact3_0.1.orig.tar.gz
-```
-这部分怪我没写清 ，当时我想展示的上一层目录的结构。因读者说我没讲 honkai-impact3-0.1/ 里面的目录，所以第二版也就加了 debian/ 目录，当然，这个方法是错的。你在展示上一层目录的时候，是没法显示下一层目录的。
-所以，完整的目录如下：
-```
-$ ls -f ../
-honkai-impact3-0.1/
-honkai-impact3-0.1.tar.gz
-honkai-impact3_0.1.orig.tar.gz
-```
-```
-$ cd honkai-impact3-0.1/
-honkai-impact3-0.1 $ ls -F
-$ debian/ usr/
-$ ls -F debian/
-source/
-changelog
-control
-copyright
-rules
-# 此处咱们还是在 honkai-impact3-0.1/ 里
-$ ls -F usr/
-$ share/
-```
-这就是为什么我故意留坑，让用户自己去观察和思考。而不是保姆级教程。虽然我也很想去做保姆级教程，但用户都被Windows给惯坏了。用户习惯几乎一团糟。我为什么老是被队友坑
+ 作者注：因读者第三次吐槽，就采纳了第三条意见。详情请看 GitHub 上的 PR。
