@@ -1,21 +1,19 @@
 [#]: subject: "怎么开始你的第一次打包？"
 [#]: author: "PokerFace128 https://github.com/pokerface128"
 [#]: keywords: "打包 deb"
-[#]: url: " "
+[#]: url: "https://linux.cn/article-14362-1.html"
 
 # 怎么开始你的第一次打包？
 
  > 太复杂的包咱们打不来，咱们先从最简单的壁纸包开始打起。
 
-![](https://s3.bmp.ovh/imgs/2022/03/349fee489f974553.png)
+![](https://img.linux.net.cn/data/attachment/album/202203/16/144330v800a3qax40px5vp.jpg)
 
 “<ruby>打包<rt>packing</rt></ruby>” 是什么？在 Linux 语境中，“打包”是指制作可以在 Linux 上用软件包管理器来安装、更新和卸载的软件包。
 
 你肯定要问了，什么要打包？举例来说，你肯定有过拍一些照片并且将它们设置为壁纸的经历，对吧。一个个传到计算机上去挺累的。把这些收集起来，打成一个壁纸包，与其他人分享是个不错的选择。顺便，通过打包，也可以对 Debian 的软件包有个大致的了解。
 
 ### 背景介绍
-
-![](https://ftp.bmp.ovh/imgs/2019/09/3101e88de6e8b45a.jpg)
 
 《崩坏 3》，是一个我很喜欢玩的游戏，但它不支持 Linux 平台，所以，望梅止渴的我只好把这些壁纸进行打包，以此纪念和女武神们并肩战斗过的时光。
 
