@@ -86,6 +86,7 @@ Writing superblocks and filesystem accounting information: done
 
 然后就可以启动了
 启动只需要一行命令:
+`screen ./vmlinux mem=1G root=/dev/root rootfstype=hostfs hostfs=./rootfs  con=null con0=null,fd:2 con1=fd:0,fd:1`
 ![](https://s3.bmp.ovh/imgs/2022/03/0e586473dc1acdf1.png)
 
 ---
