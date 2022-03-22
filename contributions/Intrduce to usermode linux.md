@@ -86,31 +86,7 @@ Writing superblocks and filesystem accounting information: done
 
 然后就可以启动了
 启动只需要一行命令:
-```
-# screen ./vmlinux mem=1G root=/dev/udba udb0=rootfs con=null con0=null,fd:2 con1=fd:0,fd:1 # 启动一个拥有 1gb 内存的用户态 linux
-Checking that ptrace can change system call numbers...OK
-Checking syscall emulation patch for ptrace...OK
-Checking advanced syscall emulation patch for ptrace...OK
-Checking environment variables for a tempdir...none found
-Checking if /dev/shm is on tmpfs...OK
-Checking PROT_EXEC mmap in /dev/shm...OK
-Adding 1941504 bytes to physical memory to account for exec-shield gap
-Linux version 5.16.7 (buildd@x86-csail-01) (gcc (Debian 11.2.0-16) 11.2.0, GNU ld (GNU Binutils for Debian) 2.37.90.20220207) #1 Sun Feb 13 16:13:29 UTC 2022
-Zone ranges:
-  Normal   [mem 0x0000000000000000-0x00000000621d9fff]
-Movable zone start for each node
-Early memory node ranges
-  node   0: [mem 0x0000000000000000-0x00000000021d9fff]
-Initmem setup node 0 [mem 0x0000000000000000-0x00000000021d9fff]
-Built 1 zonelists, mobility grouping on.  Total pages: 8530
-Kernel command line: root=98:0 console=tty
-Dentry cache hash table entries: 8192 (order: 4, 65536 bytes, linear)
-Inode-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
-mem auto-init: stack:off, heap alloc:off, heap free:off
-......
-Welcome to Debian
-
-```
+![](https://s3.bmp.ovh/imgs/2022/03/0e586473dc1acdf1.png)
 
 ---
 延深阅读：
