@@ -109,7 +109,16 @@ screen ./vmlinux mem=1G root=/dev/root rootfstype=hostfs hostfs=./rootfs  con=nu
 
 ![][1]
 
-有关如何使用用户态 Linux 来进行诸如调试、虚拟化等实验，请期待我的后继文章。
+启动后，使用你前面设置的 root 用户登录，便可以进入到用户态 Linux 容器中了。
+
+有别于 Docker，这个容器的内核和宿主的内核是隔离的，可以使用这个容器作为一个调试内核的工具，如：
+
+```
+echo 1 > /proc/sys/kernel/sysrq
+echo c > /proc/sysrq-trigger
+```
+
+即可手动触发一个“<ruby>内核恐慌<rt>Kernel Panic</rt></ruby>”错误。
 
 延伸阅读：
 
