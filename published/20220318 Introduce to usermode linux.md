@@ -1,17 +1,17 @@
 [#]: subject: "如何构建用户态 Linux"
-[#]: via: "https://www.bilibili.com/read/cv15626523"
+[#]: via: "https://github.com/LCTT/Articles/pull/8"
 [#]: author: "calvinlin https://space.bilibili.com/525982547"
 [#]: keywords: "内核 用户态"
-[#]: url: " "
+[#]: url: "https://linux.cn/article-14394-1.html"
 
 如何构建用户态 Linux
 ======
 
-![](https://s3.bmp.ovh/imgs/2022/03/164eccd6da50e10d.png)
+![](https://img.linux.net.cn/data/attachment/album/202203/25/115607eqtmmuuiklimazqt.jpg)
 
 “用户态 Linux” 是什么？它是一种可以在用户态运行的 Linux 内核。（用户态是什么，这里就不解释了）
 
-它有什么用？它用于内核隔离、替代 QEMU/Bochs 来调试 Linux 内核，可以在低性能设备上代替 KVM 进行虚拟化。
+它有什么用？它用于内核隔离、替代 QEMU/Bochs 来调试 Linux 内核，也可以在低性能设备上代替 KVM 进行虚拟化。
 
 但它也存在一些缺陷，比如不支持 ARM 架构以及多核系统。
 
@@ -167,7 +167,7 @@ calvinlin：一个普通的深圳初中生。
 
 ------
 
-via: https://www.bilibili.com/read/cv15626523
+via: https://github.com/LCTT/Articles/pull/8
 
 作者：[calvinlin](https://space.bilibili.com/525982547)
 编辑：[wxy](https://github.com/wxy)
