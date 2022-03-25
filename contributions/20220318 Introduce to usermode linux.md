@@ -4,19 +4,18 @@
 [#]: keywords: "内核 用户态"
 [#]: url: " "
 
-# 如何构建用户态 Linux
+如何构建用户态 Linux
+======
 
 ![](https://s3.bmp.ovh/imgs/2022/03/164eccd6da50e10d.png)
 
 “用户态 Linux” 是什么？它是一种可以在用户态运行的 Linux 内核。（用户态是什么，这里就不解释了）
 
-它有什么用？它用于内核隔离，替代 qemu/bochs 来调试 Linux 内核，可以在低性能设备上代替 kvm 进行虚拟化。
+它有什么用？它用于内核隔离、替代 QEMU/Bochs 来调试 Linux 内核，可以在低性能设备上代替 KVM 进行虚拟化。
 
-它也存在一些缺陷，比如不支持 ARM 架构以及多核系统。
+但它也存在一些缺陷，比如不支持 ARM 架构以及多核系统。
 
-### 如何构建一个用户态的 Linux 内核
-
-#### 编译 Linux 内核
+### 编译 Linux 内核
 
 首先通过 `git` 下载 Linux 内核源代码：
 
@@ -47,25 +46,29 @@ $ make -j8
  GEN     Module.symvers
 ```
 
-经过漫长的编译之后，你获得了一个 `vmlinux` 文件。它和正常内核的区别就是这个 `vmlinux` 可以在用户态运行。
+经过漫长的编译之后，你获得了一个 `vmlinux` 文件。它和正常的 Linux 内核的区别是，这个 `vmlinux` 可以在用户态运行。
 
-### 准备 rootfs
+### 准备根文件系统
 
-先别着急启动，先来准备 rootfs。
+先别着急启动，先来准备内核所使用的根文件系统。
 
 以下内容以 Debian Linux 为例。
 
 首先安装 `debootstrap` 软件包：
 
 ```
-sudo apt install  debootstrap
+sudo apt install debootstrap
 ```
 
-然后构建 rootfs：
+以下命令皆需要 root 权限，先切换到 root 用户：
 
 ```
-$ sudo su # 以下命令皆需要 root 权限
+$ sudo su
+```
 
+然后构建根文件系统，存放在 `rootfs` 文件中：
+
+```
 # dd if=/dev/zero of=rootfs seek=2G # 创建一个 2GB 大小的空 rootfs 文件
  2000000000字节（2 GB，2 GB）已复制，0.137825 s，570 MB/s`
 
@@ -81,35 +84,68 @@ Allocating group tables: done
 Writing inode tables: done                            
 Creating journal (4096 blocks): done
 Writing superblocks and filesystem accounting information: done 
+```
 
-# mount rootfs /mnt # 挂载
+然后挂载 `rootfs` 到 `/mnt` 下：
+
+```
+# mount rootfs /mnt
+```
+
+在其中创建 Debian Linux 的根文件系统（`/`）：
+
+```
 # cd /mnt
-# debootstrap sid ./ https://mirrors.tuna.tsinghua.edu.cn/debian # 创建 Debian 的 rootfs
+# debootstrap sid ./ https://mirrors.tuna.tsinghua.edu.cn/debian
  I: Configuring python-central... 
  I: Configuring ubuntu-minimal... 
  I: Configuring libc-bin... 
  I: Configuring initramfs-tools... 
  I: Base system installed successfully.
+```
 
-# chroot ./ # 进入新的 rootfs
+通过 `chroot` 将其改变为根目录：
 
-# passwd # 设置 root 密码 
+```
+# chroot ./
+```
+
+设置 root 密码：
+
+```
+# passwd 
  New password: 
  Retype new password: 
+```
+
+然后退出 chroot 环境，并卸载：
+
+```
+# exit # 退出 chroot 环境
+# cd ..
 # umount /mnt
-# exit
-# sudo chown `whomi` rootfs
+# exit # 退出 sudo 环境
 ```
 
-然后就可以启动了，只需要一行命令：
+设置 rootfs 的所有权为普通用户：
 
 ```
-screen ./vmlinux mem=1G root=/dev/root rootfstype=hostfs hostfs=./rootfs  con=null con0=null,fd:2 con1=fd:0,fd:1
+$ sudo chown `whoami` rootfs
+```
+
+这样，这个用户态 Linux 的根文件系统就准备好了。
+
+### 测试用户态 Linux
+
+然后就可以用这个内核启动了，只需要一行命令：
+
+```
+$ screen ./vmlinux mem=1G root=/dev/root rootfstype=hostfs hostfs=./rootfs  con=null con0=null,fd:2 con1=fd:0,fd:1
 ```
 
 ![][1]
 
-启动后，使用你前面设置的 root 用户登录，便可以进入到用户态 Linux 容器中了。
+启动后，使用你前面设置的 root 用户/密码登录，便可以进入到用户态 Linux 容器中了。
 
 有别于 Docker，这个容器的内核和宿主的内核是隔离的，可以使用这个容器作为一个调试内核的工具，如：
 
