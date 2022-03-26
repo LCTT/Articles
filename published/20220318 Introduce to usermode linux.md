@@ -30,7 +30,7 @@ git clone --depth 1 https://mirrors.tuna.tsinghua.edu.cn/git/linux.git
 ```
 $ cd linux
 $ export ARCH=um # 非常重要 设置架构为用户态
-$ make defcongig
+$ make defconfig
 $ make -j8
 
  LD      .tmp_vmlinux.kallsyms1
