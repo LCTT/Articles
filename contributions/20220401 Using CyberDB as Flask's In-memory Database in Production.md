@@ -183,8 +183,6 @@ gunicorn -w 4 -b 127.0.0.1:8000 -k gevent app:app
 
 通过此例，你可以把 CyberDB 部署到更复杂的 Web 环境中，充分享受内存的低延迟特性。CyberDB 的核心是以 Pythonic 的方式编程，你可以在任何 Python 代码中将 CyberDB 作为你的内存数据库。
 
-作者简介：
-
 ---
 作者简介：
 
