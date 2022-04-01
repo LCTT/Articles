@@ -146,7 +146,7 @@ def before_request():
 
 @app.get("/")
 def hello_world():
-    # 从数据库获取 centre 表
+    # 从数据库获取 centre 表。
     centre = g.proxy.get_cyberdict('centre')
     
     return {
