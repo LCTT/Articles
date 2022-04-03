@@ -2,13 +2,14 @@
 [#]: via: "https://gitee.com/intirain"
 [#]: author: "intirain (intirain@163.com)"
 [#]: keywords: "UNIX 聊天软件"
+[#]: url: "https://linux.cn/article-14426-1.html"
 
 VCC：给 UNIX 程序员的酷炫命令行聊天软件
 ======
 
 > VCC 是一个 UNIX/Linux 上的命令行聊天软件。
 
-![使用 VCC 聊天](images/using-vcc.png)
+![使用 VCC 聊天](images/20220327%20use%20vcc%20to%20chat.jpg)
 
 ### VCC 简介
 
@@ -46,6 +47,8 @@ vcc $ ./vcc [服务器 IP 地址] # 当前还不支持域名
 ```
 
 登录成功之后即可开始聊天，只需要输入消息并且回车即可。过长的信息（大约 200 字节以上）会被截断。
+
+![](images/20220327%20using-vcc.png)
 
 ### 运行自己的 vccd 服务器端
 
@@ -127,7 +130,7 @@ VCC 还处于非常早期的开发阶段，但它应该已经具备了一个基�
 
 ---
 
-作者简介: intirain，喜欢 UNIX、x86、RISC-V 上的 C。
+作者简介：intirain，喜欢 UNIX、x86、RISC-V 上的 C。
 
 -----
 via: https://github.com/LCTT/Articles/pull/13
