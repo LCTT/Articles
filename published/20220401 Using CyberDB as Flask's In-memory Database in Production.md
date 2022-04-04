@@ -1,7 +1,8 @@
 [#]: subject: "生产环境下使用 CyberDB 作为 Flask 的内存数据库"
 [#]: author: "Cyberbolt https://www.zhihu.com/people/cyberbolt"
 [#]: keywords: "CyberDB Python内存数据库 Flask Gunicorn"
-[#]: url: "https://www.cyberlight.xyz/static/cyberdb-chn/tutorial/flask/"
+[#]: via: "https://www.cyberlight.xyz/static/cyberdb-chn/tutorial/flask/"
+[#]: url: "https://linux.cn/article-14430-1.html"
 
 Python 内存数据库 CyberDB 使用实例
 ======
