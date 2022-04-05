@@ -13,7 +13,7 @@ Python 内存数据库 CyberDB 使用实例
 
 ### 概括
 
-CyberDB 是一个轻量级的 Python 内存数据库。它旨在利用 Python 内置数据结构目录、列表等作数据存储，通过 TCP 套接字高效通信，并提供了数据持久化。该数据库的亮点在于它使用了 Pythonic 的方式编程，你可以像使用目录和列表一样使用 CyberDB。
+CyberDB 是一个轻量级的 Python 内存数据库。它旨在利用 Python 内置数据结构字典、列表作数据存储，通过 TCP 套接字高效通信，并提供了数据持久化。该数据库的亮点在于它使用了 Pythonic 的方式编程，你可以像使用字典和列表一样使用 CyberDB。
 
 现在我们把 CyberDB 带到能发挥其作用的地方，在生产环境中将 CyberDB 作为 Flask 的内存数据库，使用 Gunicorn 运行，并实现多进程间的通信。
 
