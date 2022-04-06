@@ -4,7 +4,7 @@
 ======
 
 众所周知 deepin 在最近的更新中添加来人脸识别功能
-那么有没有办法，在 debian/ubuntu 等系统中获得同样的功能？
+那么有没有办法，在 其他 linux 系统中获得同样的功能？
 答案是可以的
 ======
 
@@ -14,13 +14,19 @@ Howdy提供Windows Hello™ Linux的风格认证。使用内置红外发射器�
 使用中央身份验证系统（ PAM ），这可以在任何需要密码的地方工作：登录、锁屏、sudo、su等等。
 "(转自项目 README )
 
-如何安装：
+
+- debian/ubuntu 下安装方法：
 打开https://github.com/boltgolt/howdy/releases
 下载最新的deb文件
 使用以下命令安装
 ```
-sudo dpkg -i howdy_xxx.deb
+sudo dpkg -i howdy_2.6.1.deb #（请将文件名代替为你下载的文件名）
 sudo apt install --fix-broken#使用 --fix-broken安装缺失的依赖
+```
+- fedora 下安装方法：
+```
+sudo dnf copr enable principis/howdy
+sudo dnf --refresh install howdy
 ```
 
 (安装时 会自动下载依赖包和dlib的模型 请保证网络通畅)
@@ -39,7 +45,7 @@ calvinlin：一个普通的深圳初中生。
 
 ------
 
-via: https://www.bilibili.com/read/cv15488839
+via: https://www.bilibili.com/read/
 
 作者：[calvinlin](https://space.bilibili.com/525982547)
 编辑：[wxy](https://github.com/wxy)
