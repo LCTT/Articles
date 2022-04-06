@@ -1,17 +1,18 @@
-[#]: subject: "如何在 Linux 下使用 DLNA 投屏"
-[#]: via: "https://www.bilibili.com/read/cv15488839"
-[#]: author: "calvinlin https://space.bilibili.com/525982547"
-[#]: keywords: "DLNA 投屏"
-[#]: url: "https://linux.cn/article-14341-1.html"
+
 
 使用howdy在debian/ubuntu下使用人脸登录
+======
+
+众所周知 deepin 在最近的更新中添加来人脸识别功能
+那么有没有办法，在 debian/ubuntu 等系统中获得同样的功能？
+答案是可以的
 ======
 
 Howdy是什么？
 "
 Howdy提供Windows Hello™ Linux的风格认证。使用内置红外发射器和摄像头，结合面部识别来证明你是谁。
-使用中央身份验证系统（PAM），这可以在任何需要密码的地方工作：登录、锁屏、sudo、su等等。
-"(转自项目README)
+使用中央身份验证系统（ PAM ），这可以在任何需要密码的地方工作：登录、锁屏、sudo、su等等。
+"(转自项目 README )
 
 如何安装：
 打开https://github.com/boltgolt/howdy/releases
@@ -19,8 +20,9 @@ Howdy提供Windows Hello™ Linux的风格认证。使用内置红外发射器�
 使用以下命令安装
 ```
 sudo dpkg -i howdy_xxx.deb
-sudo apt install --fix-broken
+sudo apt install --fix-broken#使用 --fix-broken安装缺失的依赖
 ```
+
 (安装时 会自动下载依赖包和dlib的模型 请保证网络通畅)
 安装后 运行`sudo howdy config`来编辑配置文件
 将配置文件中的`device_path = /dev/xxxx`改成你的摄像头路径 它通常是`/dev/video0`
