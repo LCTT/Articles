@@ -6,7 +6,7 @@
 众所周知 deepin 在最近的更新中添加来人脸识别功能
 那么有没有办法，在 其他 linux 系统中获得同样的功能？
 答案是可以的
-======
+
 
 Howdy是什么？
 "
@@ -30,8 +30,10 @@ sudo dnf --refresh install howdy
 ```
 
 (安装时 会自动下载依赖包和dlib的模型 请保证网络通畅)
-安装后 运行`sudo howdy config`来编辑配置文件
-将配置文件中的`device_path = /dev/xxxx`改成你的摄像头路径 它通常是`/dev/video0`
+安装后，运行`sudo howdy config`来编辑配置文件
+将配置文件中的`device_path = /dev/xxxx`改成你的摄像头路径，它通常是`/dev/video0`
+> 如果/dev下没有videoX设备 请检查摄像头驱动是否已经安装
+
 现在 你可以尝试使用`sudo`或者重新登录来体验howdy
 ------
 
