@@ -9,10 +9,10 @@
 
 
 Howdy是什么？
-"
-Howdy提供Windows Hello™ Linux的风格认证。使用内置红外发射器和摄像头，结合面部识别来证明你是谁。
-使用中央身份验证系统（ PAM ），这可以在任何需要密码的地方工作：登录、锁屏、sudo、su等等。
-"(转自项目 README )
+
+> Howdy提供Windows Hello™ Linux的风格认证。使用内置红外发射器和摄像头，结合面部识别来证明你是谁。
+> 使用中央身份验证系统（ PAM ），这可以在任何需要密码的地方工作：登录、锁屏、sudo、su等等。
+(转自项目 README )
 
 
 - debian/ubuntu 下安装方法：
