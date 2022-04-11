@@ -2,16 +2,18 @@
 [#]: via: " "
 [#]: author: "calvinlin https://space.bilibili.com/525982547"
 [#]: keywords: "Howdy 人脸识别 登录"
-[#]: url: " "
+[#]: url: "https://linux.cn/article-14458-1.html"
 
 使用 Howdy 为 Linux 增加人脸识别登录
 ======
+
+![](https://img.linux.net.cn/data/attachment/album/202204/11/153438vjp2zncpc74ne2ci.jpg)
 
 最近，深度操作系统刚刚发布了 20.05，它添加的 [人脸识别功能](https://linux.cn/article-14425-1.html) 引来了社区的关注。
 
 抛开人脸识别的准确度、可靠性，以及是否实用等问题，我们是否可以在其它的 Linux 系统中也获得人脸识别/解锁的的功能呢？
 
-答案是可以的。这就是本文要介绍的 Howdy 提供的功能。
+答案是肯定的。这就是本文要介绍的 Howdy 提供的功能。
 
 ### Howdy 是什么？
 
@@ -39,7 +41,7 @@ sudo apt install howdy
 wget https://github.com/boltgolt/howdy/releases/download/v2.6.1/howdy_2.6.1.deb
 ```
 
-使用以下命令安装：
+然后使用以下命令安装：
 
 ```
 sudo dpkg -i howdy_2.6.1.deb  # 请将文件名代替为你下载的文件名
@@ -53,9 +55,9 @@ sudo dnf copr enable principis/howdy
 sudo dnf --refresh install howdy
 ```
 
-安装时，会自动下载依赖包和 dlib 的模型。请保证网络通畅。
-
 对于 Arch Linux 和 openSUSE 请参照其 [仓库的说明](https://github.com/boltgolt/howdy/)。
+
+安装时，会自动下载依赖包和 dlib 的模型。请保证网络通畅。
 
 ### 配置
 
@@ -85,7 +87,7 @@ sudo howdy add
 
 `https://github.com/boltgolt/howdy/blob/caf244ce297d27d40168c40571b0fad6f7ee2596/src/compare.py`
 
-代替 `/lib/security/howdy/compare.py` 即可。
+将 `/lib/security/howdy/compare.py` 代替即可。
 
 ------
 
@@ -95,7 +97,7 @@ calvinlin：一个普通的深圳初中生。
 
 ------
 
-via: https://www.bilibili.com/read/
+via: https://github.com/LCTT/Articles/pull/17
 
 作者：[calvinlin](https://space.bilibili.com/525982547)
 编辑：[wxy](https://github.com/wxy)
