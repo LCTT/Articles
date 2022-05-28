@@ -83,7 +83,7 @@ end
 ### GenServer 和 socket
 先是定义了两个结构体, 一个用于存储 peer 的信息, 一个存储客户端的信息(peer 键是 peer 结构体)<br>
 然后是一堆常量, 服务器可以改成你的 128 核心 1TB 内存 1EB 固态硬盘的小型服务器的地址, `key_integer` 是客户端的密钥生成器用的<br>
-其实可以在 `config.exs` 或者用 json 来配置, 但是我懒哈哈
+其实可以在 `config.exs` 或者用 json 来配置
 ```elixir
 defmodule Client do
   defmodule Peer do
@@ -213,7 +213,7 @@ end
 这里用 docker 方便部署
 ### 应用程序监视器
 因为是服务端嘛, 鬼知道用户或其它东西会整出什么么蛾子, 所以使用应用程序监视器在程序挂掉时重启进程很有必要<br>
-这也是 erlang/OTP 的 let it crash 哲学的一种体现
+这也是 erlang/OTP 的 let it crash 思想的一种体现
 ```elixir
 defmodule Server.Application do
   use Application
@@ -313,7 +313,7 @@ mix run --no-halt
 
 ---一个高中生
 作者简介: <br>
-B站: 董地瓜((MC红石生存, 高压电, 编程, GeoGebra)区up猪)
+B站: 董地瓜(MineCraft红石生存, 高压电, 编程, GeoGebra 区up猪)
 
 ---
 
