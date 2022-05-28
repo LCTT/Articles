@@ -1,13 +1,13 @@
-# 讲一讲我前段时间做的一个点对点加密聊天软件
-![miku](miku_sheep.jpg)
-## 版权声明
-本文章**仅在**本人github pages发布,<br>
-转载给爷**标上源链接**, 敢在某些平台转载投自制的**你\*\**!**<br>
-CC BY-NC-SA
+[//]: # (metadata)
+[^_^]: author: dongdigua
+[^_^]: via: dongdigua.github.io/p2p_chat
+[^_^]: keywords: elixir erlang p2p rsa 通讯
 
-## 开头
-项目地址: https://github.com/dongdigua/p2p_chat<br>
-写着玩的小项目, 肯定有很多不足
+使用elixir写一个简易点对点(加密)聊天软件
+===
+![题图](https://dongdigua.github.io/miku_sheep.jpg)
+
+> 尝试用elixir写一个p2p加密聊天软件
 
 ## 使用到的技术
 - UDP socket
@@ -30,7 +30,7 @@ CC BY-NC-SA
 为了让客户端不乱配对, 就需要增加一个注册功能, 也使用ETS实现.<br>
 
 ## 客户端实现
-内容比较多, 所以我不会讲的很全, 代码不会都放出来
+内容比较多, 所以我不会讲的很全, 代码不会都放出来<br>
 项目目录大概是这样
 ```sh
 ├── client
@@ -308,36 +308,12 @@ mix escript.build
 mix run --no-halt
 ```
 
-## 后记
-### 感想
-#### 分层实现
-之前是把一个socket在函数之间来会传, 很混乱, 现在是把涉及到网络的都放在核心模块, 思路清晰多了
-#### 结构化数据
-刚开始我服务端是用的多个元组表示用户数据的, 结果一个地方改了整个就得改, 所以使用结构体很必要
-- markdown用VSCode真香!
-### elixir/erlang UI?
-查了一下, elixir/erlang的基于文本界面(tui)的库好像都得调用C, 有点难受,<br>
-然后:gl官方文档看不懂...
-### Rust杂谈
-正如上文(ui)所说, elixir实现ui总是要调用底层库, 然后OpenGL的支持也没有相关的教程(可能即使实现出来了渲染效率也不高).<br>
-还有就是我想知道是elixir里面的一些数据结构如何存储的, 所以我最近准备学一学Rust这个比较底层的语言.<br>
-现在刚开始学, 在看the book以及B站相关视频, 然后还是在exercism上做练习, Rust学起来有些地方和之前学elixir挺不同的:<br>
-- 静态类型: 我之前一直写动态类型的语言(py, ex, jl), 静态有些不适应, 但其实还好
-- 难: 很有挑战性, exercism上的learning exercises没有elixir那么详细
-- 现代, 放心, 受限?: Rust编译器是真滴强大, 静态检查很多细节都能检查出来, 而且所有权让内存管理更安全了,<br>
-不像C随便写一些就segfault, 也不用预先定义函数
-```c
-#include <stdio.h>
-int ref();
-int main(int argc, char *argv){
-  int *a = ref();
-  printf("%s", *a);
-  return 0;
-}
-int ref(){
-  char *s = "haha";
-  return &s;
-}
-```
-但是有些地方(暂时这个水平)觉得有点受限, 没有C那么为所欲为, 但这一段我应该看完unsafe rust在下结论233
-- 底层: 原生的ncurses之类的库, 也有很多原生ui界面库
+## 总结
+写这么一个项目挺好玩的
+
+---
+作者简介: 是人类<br>
+B站: 董地瓜((MC红石生存, 高压电, 编程, GeoGebra)区up猪)
+
+---
+
