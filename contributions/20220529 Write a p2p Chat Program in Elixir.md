@@ -310,7 +310,7 @@ mix run --no-halt
 
 ---
 作者简介: 一个高中生<br>
-B站: 董地瓜(MineCraft红石生存，高压电，编程，GeoGebra 区up猪)
+B站: 董地瓜(Minecraft红石生存，高压电，编程，GeoGebra 区up猪)
 
 ---
 
