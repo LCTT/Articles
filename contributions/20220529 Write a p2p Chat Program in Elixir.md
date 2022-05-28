@@ -19,7 +19,7 @@
 整个思路来源都是从这两个视频来的:<br>
 [使用 Netcat 的原理讲解](https://www.youtube.com/watch?v=s_-UCmuiYW8) & 
 [使用 Python 实现 p2p 通信](https://www.youtube.com/watch?v=IbzGL_tjmv4)<br>
-我的理解就是通过发送 UDP 包打开一个端口来让远程电脑能知道你的端口映射到了公网 IP 的哪个端口，<br>
+我的理解就是通过发送 UDP 包打开一个端口，<br>
 然后将两个需要发消息的客户端相互告诉对方各自的公网 IP 以及映射到的端口，就能实现 p2p 通信。<br>
 
 ### 大体架构
