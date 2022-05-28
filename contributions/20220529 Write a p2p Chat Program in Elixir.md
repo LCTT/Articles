@@ -1,6 +1,6 @@
 [#]: author: "dongdigua"
 [#]: via: "dongdigua.github.io/p2p_chat"
-[#]: keywords: "elixir erlang p2p rsa 通讯 开源 实验性"
+[#]: keywords: "elixir erlang p2p rsa 通信 开源 教程"
 
 使用 elixir 写一个简易点对点加密聊天软件
 ===
@@ -8,7 +8,7 @@
 
 > 尝试用 elixir 写一个 p2p 加密聊天软件
 
-## 使用到的技术
+### 使用到的技术
 - UDP socket
 - 进程(这里指 beam 虚拟机的进程)
 - GenServer
@@ -17,18 +17,19 @@
 - rsa 非对称加密
 - UDP 打洞<br>
 整个思路来源都是从这两个视频来的:<br>
-[with netcat](https://www.youtube.com/watch?v=s_-UCmuiYW8) & [with python](https://www.youtube.com/watch?v=IbzGL_tjmv4)<br>
+[使用 Netcat 的原理讲解](https://www.youtube.com/watch?v=s_-UCmuiYW8) & 
+[使用 Python 实现 p2p 通信](https://www.youtube.com/watch?v=IbzGL_tjmv4)<br>
 我的理解就是通过发送 UDP 包打开一个端口来让远程电脑能知道你的端口映射到了公网 IP 的哪个端口，<br>
 然后将两个需要发消息的客户端相互告诉对方各自的公网 IP 以及映射到的端口，就能实现 p2p 通信。<br>
 
-## 大体架构
+### 大体架构
 客户端使用 GenServer 来实现后端接口和网络通信，在 CLI 模块处理用户输入调用 GenServer.<br>
 
 服务端可以很简单，就是收到两个 IP 然后相互发送对方的地址让客户端能够相互通信，<br>
 但是为了能够接受多对客户端以及非阻塞等待客户端，就用 ETS 存储客户端的信息，<br>
 为了让客户端不乱配对，就需要增加一个注册功能，也使用 ETS 实现。<br>
 
-## 客户端实现
+### 客户端实现
 内容比较多，所以我不会讲的很全， 代码不会都放出来<br>
 项目目录大概是这样
 ```sh
@@ -45,7 +46,7 @@
 ```
 注意这里只在核心程序处理 socket，cli 模块处理用户交互，使项目分层化
 
-### escript
+#### escript
 客户端要编译成可执行文件，要在 `mix.exs` 里加入 `escript`
 ```elixir
 defmodule Client.MixProject do
@@ -79,7 +80,7 @@ end
 ```
 `main_module` 指定了程序的入口点main函数，`extra_applications` 加入 erlang 库 `:crypto` 因为后续需要使用加密
 
-### GenServer 和 socket
+#### GenServer 和 socket
 先是定义了两个结构体，一个用于存储 peer 的信息，一个存储客户端的信息(peer 键是 peer 结构体)<br>
 然后是一堆常量，服务器可以改成你的 128 核心 1TB 内存 1EB 固态硬盘的小型服务器的地址，`key_integer` 是客户端的密钥生成器用的<br>
 其实可以在 `config.exs` 或者用 json 来配置
@@ -156,7 +157,7 @@ GenServer 初始化，UDP 打开一个端口(从命令行参数传进来)
 end
 ```
 
-### 用户交互 CLI
+#### 用户交互 CLI
 首先使用 `OptionParser` 解析命令行参数，如果解析成功就启动 GenServer
 ```elixir
 def main(args \\ []) do
@@ -195,7 +196,7 @@ end
 ```
 
 
-## 服务端实现
+### 服务端实现
 服务端仅作为暴露客户端连接和将两个客户端牵手的作用，当然为了区分还要有注册功能<br>
 项目目录大概是这样
 ```sh
@@ -210,7 +211,7 @@ end
     └── mix.exs
 ```
 这里用 docker 方便部署
-### 应用程序监视器
+#### 应用程序监视器
 因为是服务端嘛，鬼知道用户或其它东西会整出什么么蛾子，所以使用应用程序监视器在程序挂掉时重启进程很有必要<br>
 这也是 erlang/OTP 的 let it crash 思想的一种体现
 ```elixir
@@ -228,7 +229,7 @@ defmodule Server.Application do
   end
 end
 ```
-### socket
+#### socket
 首先还是定义一个结构体用于存储每个用户的数据<br>
 启动两个数据库，打开 UDP 端口
 ```elixir
@@ -295,18 +296,21 @@ defmodule Server do
 end
 ```
 
-## 使用方式
-### 客户端
+### 使用方式
+#### 客户端
 ```sh
 mix escript.build
 ./client --port 2000
 ```
 输入 register 注册一个聊天，输入 find 连接另一个使用相同用户名密码 find 的人
-### 服务端
+#### 服务端
 ```sh
 mix run --no-halt
 ```
 
+### 更多参考
+[B站搬运的 Python 实现](https://www.bilibili.com/video/BV1Vo4y1S7XQ)
+[在 Python 实现之前使用 Netcat 演示](https://www.youtube.com/watch?v=TiMeoQt3K4g&ab_channel=EngineerMan)
 
 ---
 作者简介: 一个高中生<br>
