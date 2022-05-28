@@ -309,7 +309,7 @@ mix run --no-halt
 ```
 
 ### 更多参考
-[B站搬运的 Python 实现](https://www.bilibili.com/video/BV1Vo4y1S7XQ)
+[B站搬运的 Python 实现](https://www.bilibili.com/video/BV1Vo4y1S7XQ)<br>
 [在 Python 实现之前使用 Netcat 演示](https://www.youtube.com/watch?v=TiMeoQt3K4g&ab_channel=EngineerMan)
 
 ---
