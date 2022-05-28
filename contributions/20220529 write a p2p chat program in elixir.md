@@ -1,9 +1,8 @@
-[//]: # (metadata)
-[#]: author: “dongdigua“
-[#]: via: “dongdigua.github.io/p2p_chat“
-[#]: keywords: “elixir erlang p2p rsa 通讯“
+[#]: author: "dongdigua"
+[#]: via: "dongdigua.github.io/p2p_chat"
+[#]: keywords: "elixir erlang p2p rsa 通讯 开源 实验性"
 
-使用 elixir 写一个简易点对点(加密)聊天软件
+使用 elixir 写一个简易点对点加密聊天软件
 ===
 ![题图](https://dongdigua.github.io/elixir_image.jpg)
 
