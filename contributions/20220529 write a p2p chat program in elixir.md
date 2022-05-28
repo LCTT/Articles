@@ -17,7 +17,7 @@
 - escript 编译成可执行文件
 - rsa 非对称加密
 - UDP 打洞<br>
-整个思路来源都是从这两个视频来的:br>
+整个思路来源都是从这两个视频来的:<br>
 [with netcat](https://www.youtube.com/watch?v=s_-UCmuiYW8) & [with python](https://www.youtube.com/watch?v=IbzGL_tjmv4)<br>
 我的理解就是通过发送 UDP 包打开一个端口来让远程电脑能知道你的端口映射到了公网 IP 的哪个端口,<br>
 然后将两个需要发消息的客户端相互告诉对方各自的公网 IP 以及映射到的端口, 就能实现 p2p 通信.<br>
@@ -47,7 +47,7 @@
 注意这里只在核心程序处理 socket, cli 模块处理用户交互, 使项目分层化
 
 ### escript
-客户端要编译成可执行文件, 要在 mix.exs 里加入 escript 
+客户端要编译成可执行文件, 要在 `mix.exs` 里加入 `escript`
 ```elixir
 defmodule Client.MixProject do
   use Mix.Project
@@ -78,12 +78,12 @@ defmodule Client.MixProject do
   end
 end
 ```
-main\_module 指定了程序的入口点main函数, extra\_applications 加入 erlang 库 :crypto 因为后续需要使用加密
+`main_module` 指定了程序的入口点main函数, `extra_applications` 加入 erlang 库 `:crypto` 因为后续需要使用加密
 
 ### GenServer 和 socket
 先是定义了两个结构体, 一个用于存储 peer 的信息, 一个存储客户端的信息(peer 键是 peer 结构体)<br>
-然后是一堆常量, 服务器可以改成你的 128 核心 1TB 内存 1EB 固态硬盘的小型服务器的地址, key\_integer 是客户端的密钥生成器用的<br>
-其实可以在 config.exs 或者用 json 来配置, 但是我懒哈哈
+然后是一堆常量, 服务器可以改成你的 128 核心 1TB 内存 1EB 固态硬盘的小型服务器的地址, `key_integer` 是客户端的密钥生成器用的<br>
+其实可以在 `config.exs` 或者用 json 来配置, 但是我懒哈哈
 ```elixir
 defmodule Client do
   defmodule Peer do
@@ -158,7 +158,7 @@ end
 ```
 
 ### 用户交互 CLI
-首先使用 OptionParser 解析命令行参数, 如果解析成功就启动 GenServer
+首先使用 `OptionParser` 解析命令行参数, 如果解析成功就启动 GenServer
 ```elixir
 def main(args \\ []) do
   {opts, args, invalid} = OptionParser.parse(args, strict: [
@@ -172,10 +172,10 @@ def main(args \\ []) do
   end
 end
 ```
-然后 main\_cli() 就处理用户的输入,<br>
+然后 `main_cli()` 就处理用户的输入,<br>
 然后先向服务器发起 find peer 请求(需要身份验证), 找到 peer 之后交换密钥然后就可以发消息了<br>
 这里主要说一下输入密码的部分:<br>
-erlang 的 :io.get_password() 函数在 mix 中不管用, 所以就需要自己写一个清空用户输入的小东西
+erlang 的 `:io.get_password()` 函数在 mix 中不管用, 所以就需要自己写一个清空用户输入的小东西
 ```elixir
 def gets_passwd(prompt) do
   pid = spawn(fn -> clear_input(prompt) end)
@@ -248,7 +248,7 @@ defmodule Server do
   end
 ```
 
-根据收到的消息头部的不同选择处理不同的内容(其实这里的区分判断应该写全, 但是我懒, 能用就行呗)<br>
+根据收到的消息头部的不同选择处理不同的内容(其实这里的区分判断应该写全, 但能用就行呗)<br>
 然后递归调用自己形成循环(elixir 有尾递归优化, 所以这样递归不会有性能问题)
 ```elixir
   def serve(socket) do
