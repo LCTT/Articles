@@ -29,17 +29,17 @@
 为了让客户端不乱配对，就需要增加一个注册功能，也使用 ETS 实现。<br>
 
 ## 客户端实现
-内容比较多，所以我不会讲的很全, 代码不会都放出来<br>
+内容比较多，所以我不会讲的很全， 代码不会都放出来<br>
 项目目录大概是这样
 ```sh
 ├── client
 │   ├── lib
 │   │   ├── client
-│   │   │   ├── cli.ex          # 和用户交互, 调用 GenServer 后端, escript 入口点
+│   │   │   ├── cli.ex          # 和用户交互， 调用 GenServer 后端， escript 入口点
 │   │   │   ├── connect.ex      # 处理与服务器发送和接受的二进制字符串
 │   │   │   ├── crypto.ex       # rsa加密解密
 │   │   │   └── register.ex     # 仅生成注册时需要发送的二进制字符串
-│   │   └── client.ex           # 客户端核心程序, 包含 GenServer 和 socket 通信
+│   │   └── client.ex           # 客户端核心程序，包含 GenServer 和 socket 通信
 │   ├── mix.exs
 │   └── mix.lock
 ```
@@ -171,7 +171,7 @@ def main(args \\ []) do
   end
 end
 ```
-然后 `main_cli()` 就处理用户的输入,<br>
+然后 `main_cli()` 就处理用户的输入，<br>
 然后先向服务器发起 find peer 请求(需要身份验证)，找到 peer 之后交换密钥然后就可以发消息了<br>
 这里主要说一下输入密码的部分:<br>
 erlang 的 `:io.get_password()` 函数在 mix 中不管用，所以就需要自己写一个清空用户输入的小东西
