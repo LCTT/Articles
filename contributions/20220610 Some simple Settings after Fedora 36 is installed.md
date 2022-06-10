@@ -1,6 +1,6 @@
 [#]: subject: "安装 Fedora 36 后一些简单的设置"
 [#]: via: "https://www.insidentally.com/articles/000028/"
-[#]: author: "insidentally https//:www.insidentally.com"
+[#]: author: "insidentally https://www.insidentally.com"
 [#]: keywords: "Fedora 镜像源 chrony dnf"
 [#]: url: "发布后链接，由发布人填写"
 
