@@ -13,13 +13,13 @@
 
 Fedora 是 rpm 系发行版中最激进的发行版。不少朋友将使用 Fedora 的人看做是 Red Hat 的小白鼠。但是 Fedora 超快的更新速度其实也为开发者提供了不少便利。本文介绍安装 Fedora 36 后一些简单的设置，可以使 Fedora 更加易用一些。
 
-## 1. 设置软件源
+### 1. 设置软件源
 
 Fedora 默认使用 Metalink 给出推荐的镜像列表，保证用户使用的镜像仓库足够新，并且能够尽快拿到安全更新，从而提供更好的安全性。所以通常情况下使用默认配置即可，无需更改配置文件。
 
 不过，由于 Metalink 需要从国外的 Fedora 项目服务器上获取元信息，所以对于校园内网、无国外访问等特殊情况，metalink 并不适用，此时可以参照清华大学 tuna 小组介绍的[方法](https://mirrors.tuna.tsinghua.edu.cn/help/fedora/)来修改软件源。
 
-## 2. 更新系统
+### 2. 更新系统
 
 激进的发行版就要有激进的用法，因此配置好软件源后第一件事就是执行系统更新、刷新存储库列表是理所当然要做的。
 
@@ -33,7 +33,7 @@ sudo dnf update
 
 可能需要重新启动才能完成系统更新。
 
-## 3. 删除旧的内核以及其他不需要的旧软件包
+### 3. 删除旧的内核以及其他不需要的旧软件包
 
 更新系统之后多半会安装新的内核，以及会出现一些无用的依赖。重新启动系统到新的内核，确保内核运转没有问题了就可以删除旧内核以及无用的依赖了。
 
@@ -51,7 +51,7 @@ sudo dnf remove --oldinstallonly
 
 ![Fedora 一条命令删除旧内核][2]
 
-## 4. 启用 RPM Fusion 软件源
+### 4. 启用 RPM Fusion 软件源
 
 安装 Fedora 时会提示你是否启用其他第三方软件源。
 
@@ -95,7 +95,7 @@ gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-$releasever-$basearch
 ```
 
-## 5. 添加 Flathub 存储库
+### 5. 添加 Flathub 存储库
 
 Fedora 默认情况下启用了 Flatpak。 但是，它是过滤后的 Flatpak 。
 
@@ -105,7 +105,7 @@ Fedora 默认情况下启用了 Flatpak。 但是，它是过滤后的 Flatpak �
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 
-## 6. 配置 DNF 以更快地下载包
+### 6. 配置 DNF 以更快地下载包
 
 Fedora 可以通过多种方法增强下载包的速度。比如选择最快的镜像，可以提高包下载速度。 此外，如果您的互联网连接速度足够快，则可以更改并行下载的数量以获得更快的下载。
 
@@ -125,7 +125,7 @@ deltarpm 相当于增量下载，把软件增加的部分下载下来，和原�
 
 max_parellel_downloads 最大并行下载数量。
 
-## 7. 安装后更改主机名
+### 7. 安装后更改主机名
 
 安装后，默认主机名设置为 fedora。
 
@@ -147,7 +147,7 @@ sudo hostnamectl set-hostname "你的主机名"
 # 192.168.1.13 bar.mydomain.org bar
 ```
 
-## 8. 安装 Gnome 优化和扩展应用程序
+### 8. 安装 Gnome 优化和扩展应用程序
 
 要调整 gnome 的外观和感觉，您需要安装 GNOME Tweaks 和扩展管理器应用程序。 可以通过软件中心或终端使用以下命令来完成：
 
@@ -158,7 +158,7 @@ sudo dnf install gnome-tweaks gnome-extensions-app
 
 使用一些好用的 GNOME 扩展来增强您的桌面工作的使用体验。本文就不展开 GNOME 扩展的玩法了。
 
-## 9. 用于电池健康管理的 TLP
+### 9. 用于电池健康管理的 TLP
 
 TLP 是一个很好的实用程序，可帮助优化笔记本电脑的电池。该实用程序带有各种命令行选项来调整和查看有关功耗的报告。
 
@@ -170,7 +170,7 @@ dnf install tlp tlp-rdw
 
 安装 TLP 能够极大的提高笔记本电脑电池的使用时长。
 
-## 10. 安装和配置主题
+### 10. 安装和配置主题
 
 gnome 桌面的美化是个见仁见智的事情。
 
@@ -202,7 +202,7 @@ sudo dnf install breeze-cursor-theme
 
 ![GNOME 优化外观][4]
 
-## 11. 配置 NTP 以获得准确的时间
+### 11. 配置 NTP 以获得准确的时间
 
 Network Time Protocol（NTP）是用来使计算机时间同步化的一种协议，它可以使计算机对其服务器或时钟源做同步化，它可以提供高精准度的时间校正。
 
