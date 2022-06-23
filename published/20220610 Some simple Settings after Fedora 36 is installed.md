@@ -73,7 +73,7 @@ mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&
 enabled=1
 metadata_expire=7d
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-$releasever-$basearch
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-$releasever
 
 [rpmfusion-free-debuginfo]
 name=RPM Fusion for Fedora $releasever - Free - Debug
@@ -81,7 +81,7 @@ mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-debug-$relea
 enabled=0
 metadata_expire=7d
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-$releasever-$basearch
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-$releasever
 
 [rpmfusion-free-source]
 name=RPM Fusion for Fedora $releasever - Free - Source
@@ -90,7 +90,7 @@ mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-source-$rele
 enabled=0
 metadata_expire=7d
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-$releasever-$basearch
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-$releasever
 ```
 
 ### 5、添加 Flathub 存储库
@@ -167,6 +167,24 @@ TLP 非常好用，你只需安装它并忘记它。这不需要任何设置或�
 dnf install tlp tlp-rdw
 ```
 
+然后卸载有冲突的 power-profiles-daemon 软件包：
+
+```
+dnf remove power-profiles-daemon
+```
+
+设置开机启动 TLP 的服务：
+
+```
+systemctl enable tlp.service
+```
+
+您还应该屏蔽以下服务以避免冲突，确保 TLP 的无线设备（蓝牙、wifi等）切换选项的能够正确操作：
+
+```
+systemctl mask systemd-rfkill.service systemd-rfkill.socket
+```
+
 安装 TLP 能够极大的提高笔记本电脑电池的使用时长。
 
 ### 10、安装和配置主题
@@ -178,7 +196,7 @@ GNOME 桌面的美化是个见仁见智的事情。
 安装主题：
 
 ```
-sudo dnf install gnome-shell-theme-flat-remix
+sudo dnf install flat-remix-theme
 ```
 
 安装图标：
@@ -209,7 +227,7 @@ Fedora 默认使用 chrony 来进行时间同步。
 
 可以修改 `/etc/chrony.conf`
 
-将 `pool` 的值修改为：
+将 `pool` 的值选择为下列中的其中一个即可：
 
 ```
 # 中国 NTP 授时快速服务
