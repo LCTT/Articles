@@ -73,77 +73,23 @@ UUID=**** /data ntfs3 iocharset=utf8,umask=0,prealloc 0 0
 
 ### 挂载参数
 
-<table>
-    <tr>
-        <th>参数</th>
-        <th>解释</th>
-    </tr>
-    <tr>
-        <td>iocharset=name</td>
-        <td>此选项告知驱动程序如何解释路径字符串，并将其转换为 Unicode 或返回。如果未设置此选项，将使用默认代码页（CONFIG\u NLS\u default）。示例：iocharset=utf8</td>
-    </tr>
-    <tr>
-        <td>uid=</td>
-        <td>挂载用户 id</td>
-    </tr>
-    <tr>
-        <td>gid=</td>
-        <td>挂载组 id</td>
-    </tr>
-    <tr>
-        <td>umask=</td>
-        <td>控制装载 NTFS 卷后创建的文件/目录的默认权限。</td>
-    </tr>
-    <tr>
-        <td>dmask=</td>
-        <td rowspan='2'> fmask 只适用于文件，dmask 只适用于目录，而不是指定同时适用于文件和目录的 umask。</td>
-    </tr>
-    <tr>
-        <td>fmask=</td>
-    </tr>
-    <tr>
-        <td rowspan='3'>noacsrules</td>
-        <td>“无访问规则”装载选项将文件/文件夹的访问权限设置为 777，所有者/组设置为 root。此装载选项吸收所有其他权限。</td>
-    </tr>
-    <tr>
-        <td>文件/文件夹的权限更改将报告为成功，但仍将保持 777。</td>
-    </tr>
-    <tr>
-        <td>所有者/组更改将报告为成功，但他们将保留为 root 用户。</td>
-    </tr>
-    <tr>
-        <td>nohidden</td>
-        <td>Linux 下不会显示具有 Windows 特定隐藏（FILE_ATTRIBUTE_HIDDEN）属性的文件。</td>
-    </tr>
-    <tr>
-        <td>sys_immutable</td>
-        <td>具有 Windows 特定系统（FILE_ATTRIBUTE_SYSTEM）属性的文件将标记为系统不可变文件。</td>
-    </tr>
-    <tr>
-        <td>discard</td>
-        <td>支持 TRIM 命令以提高删除操作的性能，建议将其用于固态驱动器（SSD）。</td>
-    </tr>
-    <tr>
-        <td>force</td>
-        <td>即使卷被标记为脏，也强制驱动程序装载分区。不建议使用。</td>
-    </tr>
-    <tr>
-        <td>sparse</td>
-        <td>创建稀疏的新文件。</td>
-    </tr>
-    <tr>
-        <td>showmeta</td>
-        <td>使用此参数可显示已装入 NTFS 分区上的所有元文件（系统文件）。默认情况下，所有元文件都是隐藏的。</td>
-    </tr>
-    <tr>
-        <td>prealloc</td>
-        <td>当写入时文件大小增加时，为文件过度预分配空间。减少对不同文件执行并行写入操作时的碎片。</td>
-    </tr>
-    <tr>
-        <td>acl</td>
-        <td>支持 POSIX ACL（访问控制列表）。如果内核支持，则有效。不要与 NTFS ACL 混淆。指定为 acl 的选项支持 POSIX acl。</td>
-    </tr>
-</table>
+| 参数 | 解释 |
+| --- | --- |
+| iocharset=name | 此选项告知驱动程序如何解释路径字符串，并将其转换为 Unicode 或返回。如果未设置此选项，将使用默认代码页（CONFIG\\u NLS\\u default）。示例：iocharset=utf8 |
+| uid= | 挂载用户 id |
+| gid= | 挂载组 id |
+| umask= | 控制装载 NTFS 卷后创建的文件/目录的默认权限。 |
+| dmask= | fmask 只适用于文件，dmask 只适用于目录，而不是指定同时适用于文件和目录的 umask。 |
+| fmask= |见上|
+| noacsrules | “无访问规则”装载选项将文件/文件夹的访问权限设置为 777，所有者/组设置为 root。此装载选项吸收所有其他权限。文件/文件夹的权限更改将报告为成功，但仍将保持 777。所有者/组更改将报告为成功，但他们将保留为 root 用户。 |
+| nohidden | Linux 下不会显示具有 Windows 特定隐藏（FILE\_ATTRIBUTE\_HIDDEN）属性的文件。 |
+| sys\_immutable | 具有 Windows 特定系统（FILE\_ATTRIBUTE\_SYSTEM）属性的文件将标记为系统不可变文件。 |
+| discard | 支持 TRIM 命令以提高删除操作的性能，建议将其用于固态驱动器（SSD）。 |
+| force | 即使卷被标记为脏，也强制驱动程序装载分区。不建议使用。 |
+| sparse | 创建稀疏的新文件。 |
+| showmeta | 使用此参数可显示已装入 NTFS 分区上的所有元文件（系统文件）。默认情况下，所有元文件都是隐藏的。 |
+| prealloc | 当写入时文件大小增加时，为文件过度预分配空间。减少对不同文件执行并行写入操作时的碎片。 |
+| acl | 支持 POSIX ACL（访问控制列表）。如果内核支持，则有效。不要与 NTFS ACL 混淆。指定为 acl 的选项支持 POSIX acl。 |
 
 ### NTFS3 的优点
 
