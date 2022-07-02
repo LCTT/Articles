@@ -1,23 +1,19 @@
-[#]: subject: "使用 ntfs3 驱动替换 ntfs-3g 挂载 windows NTFS 分区"
+[#]: subject: "如何使用新的原生 NTFS 驱动替代旧版的 FUSE NTFS 驱动"
 [#]: via: "https://www.insidentally.com/articles/000029/"
 [#]: author: "insidentally https://www.insidentally.com"
 [#]: keywords: " 文件系统 ntfs3 ntfs-3g 分区"
 [#]: url: "发布后链接，由发布人填写"
 
-使用 ntfs3 驱动替换 ntfs-3g 挂载 windows NTFS 分区
+如何使用新的原生 NTFS 驱动替代旧版的 FUSE NTFS 驱动
 ======
 
 > <ruby>NTFS<rt>New Technology File System</rt></ruby> 是 Windows NT 内核的系列操作系统支持的、一个特别为网络和磁盘配额、文件加密等管理安全特性设计的磁盘文件系统格式。而 NTFS3 是功能齐全的 NTFS 读写驱动程序。该驱动程序适用于最高 3.1 的 NTFS 版本。
 
-[//]: # (文章内图片请自行放置于图床，并引用)
-
 ![使用 ntfs3 驱动替换 ntfs-3g 挂载 windows NTFS 分区][1]
-
-[//]: # (文章内章节以 `###` 标题为一级标题，子标题以此类推)
 
 ### 简介
 
-最初 Linux 内核没有对 NTFS 做原生支持，来自 Tuxera 的 NTFS-3G 是目前主流的解决方案，但在实际使用中也有不少小问题。NTFS-3G 是借助 Linux 的用户空间文件系统 FUSE 模块在用户层实现的一个模仿对 NTFS 支持的文件系统，对 NTFS 的访问逻辑代码都是在用户层代码实现的。
+最初 Linux 内核没有对 NTFS 做原生支持，后来的原生支持也仅有只读功能，来自 Tuxera 的 NTFS-3G 是目前主流的解决方案，但在实际使用中也有不少小问题。NTFS-3G 是借助 Linux 的用户空间文件系统 FUSE 模块在用户层实现的一个模仿对 NTFS 支持的文件系统，对 NTFS 的访问逻辑代码都是在用户层代码实现的。
 
 在 NTFS3 出现之前 Linux 上使用 NTFS 主要问题还是缺乏稳定且功能齐全的读/写支持。
 
@@ -27,17 +23,9 @@
 
 * 支持本地日志回放。
 
-* 支持安装的 NTFS 卷的 NFS 导出。
+* 支持挂载的 NTFS 卷的 NFS 导出。
 
-* 支持扩展属性。预定义的扩展属性：
-
-  * system.ntfs_security gets/sets security
-    
-    关键字: SECURITY_DESCRIPTOR_RELATIVE
-
-  * system.ntfs_attrib gets/sets ntfs file/dir attributes.
-
-  > 注意：这一项应用于空文件，允许在稀疏（0x200）、压缩（0x800）和正常之间切换类型。
+* 支持文件和文件夹的权限管理。
 
 ### 挂载
 
@@ -45,13 +33,27 @@
 
 #### 手动挂载
 
-手动挂载使用命令：
+以前使用 NTFS-3g 驱动的挂载方式是：
+
+``` bash
+# mount -t ntfs-3g /dev/sdxY /mnt
+```
+
+现在只需要将 ntfs-3g 替换为 ntfs3 即可：
 
 ``` bash
 # mount -t ntfs3 /dev/sdxY /mnt
 ```
 
 `-t` 指出文件系统类型，`/dev/sdxY` 是你分区的路径，可以使用 `lsblk` 命令查看。`/mnt` 是挂载到哪个文件夹。
+
+如果需要挂载参数，就使用 `-o` 后面接参数就行了，如：
+
+``` bash
+# mount -t ntfs3 -o iocharset=utf8,umask=22,prealloc /dev/sdxY /mnt
+```
+
+这里 iocharset=utf8,umask=22,prealloc 都是挂载参数，详见[后文](#挂载参数)
 
 #### 开机自动挂载
 
@@ -159,7 +161,9 @@ NTFS3 是内核态的驱动，ntfs3 比 nfts-3g 无论是速度还是负载都�
 
 ### 关于 NTFS3 驱动无人维护的问题
 
-自从该驱动 2021 年在 Linux 5.15 中最终被主线化以来，至今为止，在接近一年的时间里，还没有任何重大的错误修复被送入驱动。
+Paragon 2020年在 GNU 通用许可证下发布了 NTFS3 驱动程序，在开源后的一年里，NTFS3 的驱动经过了多轮审查和修改，用来提高代码质量。直到 2021 年合并进入内核主线。
+
+但是自从该驱动 2021 年在 Linux 5.15 中最终被主线化以来，至今为止，在接近一年的时间里，还没有任何重大的错误修复被送入驱动。
 
 有人推测是该驱动的维护者 Konstantin Komarov 身处俄罗斯，受到俄乌战争影响的原因。
 
