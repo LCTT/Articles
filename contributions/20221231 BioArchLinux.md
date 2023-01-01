@@ -52,7 +52,7 @@ $ pacman -Qi pkg_name
 Windows 用户优先推荐 WSL，因为 docker 在 Windows 下依赖 WSL。只需要在任意一个镜像站点的 `wsl` 文件夹下找到 `tar` 文件即可，解压它，在安装了 `wsl` 的前提下双击 `BioArch.exe` 文件，就可以开始成功安装，安装好后键入下述命令即可进入。
 
 ```
-wsl -d BioArchLinux
+wsl -d BioArch
 ```
 
 在使用前需要做一些初始化的任务，比如初始化 WSL，这里的镜像地址可以更改为你喜欢的镜像，镜像列表见 [mirrorlist 仓库](https://github.com/BioArchLinux/mirror) 里的 `mirrorlist.bio`。
