@@ -1,5 +1,5 @@
 [#]: subject: "课堂作业：关于理查德-斯托尔曼的文化和职业身份论文"
-[#]: via: "来源链接，如本文有更早发布地址"
+[#]: via: "https://steemit.com/cn/@xiix0/r6hnt"
 [#]: author: "https://steemit.com/@xiix0"
 [#]: keywords: "GNU 开源"
 [#]: url: "发布后链接，由发布人填写"
@@ -60,7 +60,7 @@
 
 ------
 
-via: 
+via: https://steemit.com/cn/@xiix0/r6hnt
 
 作者：[Xiyue Zhang](https://steemit.com/@xiix0)
 
