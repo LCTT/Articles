@@ -1,21 +1,14 @@
-# 课堂作业：关于理查德-斯托尔曼的文化和职业身份论文
-
-```
 [#]: subject: "课堂作业：关于理查德-斯托尔曼的文化和职业身份论文"
 [#]: via: "来源链接，如本文有更早发布地址"
 [#]: author: "https://steemit.com/@xiix0"
 [#]: keywords: "GNU 开源"
 [#]: url: "发布后链接，由发布人填写"
-[//]: # (投稿采用 Markdown 格式)
-[//]: # (投稿文件名格式：“日期 英文标题.md”，例如：`20220222 How To Make Live.md`)
-[//]: # (投稿请发送拉取请求到 `contributions` 目录，标题为文件名)
+
 课堂作业：关于理查德-斯托尔曼的文化和职业身份论文
-```
-
+======
 > 本文是对我的英语课堂作业的翻译。原文不保留任何权利。
-> 
 
-![My project-1.jpg](%E8%AF%BE%E5%A0%82%E4%BD%9C%E4%B8%9A%EF%BC%9A%E5%85%B3%E4%BA%8E%E7%90%86%E6%9F%A5%E5%BE%B7-%E6%96%AF%E6%89%98%E5%B0%94%E6%9B%BC%E7%9A%84%E6%96%87%E5%8C%96%E5%92%8C%E8%81%8C%E4%B8%9A%E8%BA%AB%E4%BB%BD%E8%AE%BA%E6%96%87%20eb52edfd62e04f9a92ff9b3c6aff3d5c/My_project-1.jpg)
+[![Find your reason to support free software.](images/banner.jpg)](https://my.fsf.org/donate)
 
 ### 摘要
 
@@ -41,7 +34,7 @@
 
 总之，理查德·斯托曼作为自由软件活动家的工作和倡导为他的文化和职业身份塑造了影响。通过GNU操作系统的开发，他为自由软件运动的倡导，以及他促进技术道德使用的努力，斯托曼已经表明了他致力于促进使用软件，使用户能够对其计算体验拥有更大的控制和自主权。他的工作在技术界产生了影响，并赢得了广泛的认可和尊重。
 
-![My project-1 (1).jpg](%E8%AF%BE%E5%A0%82%E4%BD%9C%E4%B8%9A%EF%BC%9A%E5%85%B3%E4%BA%8E%E7%90%86%E6%9F%A5%E5%BE%B7-%E6%96%AF%E6%89%98%E5%B0%94%E6%9B%BC%E7%9A%84%E6%96%87%E5%8C%96%E5%92%8C%E8%81%8C%E4%B8%9A%E8%BA%AB%E4%BB%BD%E8%AE%BA%E6%96%87%20eb52edfd62e04f9a92ff9b3c6aff3d5c/My_project-1_(1).jpg)
+[![Take the next step to software freedom.](images/banner1.jpg)](https://my.fsf.org/donate)
 
 ### References
 
@@ -61,13 +54,11 @@
 
 [^8] Wilson, Binoy.” Richard Stallman: Famous IT Personalities”. Freefeast. 22 June 2016 Web. [https://freefeast.info/](https://freefeast.info/) personality-motivation/famous\_it\_personalities/richard-stallman-famous-personalities/. Accessed January 17, 2023.
 
-```
 ---
 
 作者简介：这是我七年级上学期的期末作业。访问 https://steemit.com/@xiix0 关注我。
 
 ------
-```
 
 via: 
 
