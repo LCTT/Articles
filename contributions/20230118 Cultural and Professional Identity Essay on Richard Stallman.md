@@ -6,7 +6,9 @@
 
 课堂作业：关于理查德-斯托尔曼的文化和职业身份论文
 ======
-> 本文是对我的英语课堂作业的翻译。原文不保留任何权利。
+> 本文是对我的英语课堂作业的翻译。原文不保留任何权利。https://steemit.com/gnu/@xiix0/cultural-and-professional-identity-essay-on-richard-stallman
+
+
 
 [![Find your reason to support free software.](images/banner.jpg)](https://my.fsf.org/donate)
 
