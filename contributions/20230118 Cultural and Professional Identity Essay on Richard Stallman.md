@@ -54,7 +54,7 @@
 
 [^7] Stallman, Richard. ”Richard Stallman”. Stallman. n.d. Web. [https://stallman.org/biographies.html](https://stallman.org/biographies.html). Accessed January 17, 2023.
 
-[^8] Wilson, Binoy.” Richard Stallman: Famous IT Personalities”. Freefeast. 22 June 2016 Web. [https://freefeast.info/](https://freefeast.info/personality-motivation/famous_it_personalities/richard-stallman-famous-personalities/). Accessed January 17, 2023.
+[^8] Wilson, Binoy.” Richard Stallman: Famous IT Personalities”. Freefeast. 22 June 2016 Web. https://freefeast.info/personality-motivation/famous_it_personalities/richard-stallman-famous-personalities/. Accessed January 17, 2023.
 
 ---
 
