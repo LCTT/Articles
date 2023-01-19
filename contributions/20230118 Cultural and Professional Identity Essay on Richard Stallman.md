@@ -44,7 +44,7 @@
 
 [^2] Stallman, Richard. ”Why free software is better”. Free Software Foundation. n.d. Web. [https://www.gnu.org/](https://www.gnu.org/) philosophy/free-sw.html. January 17, 2023.
 
-[^3] Hosch, William L.. ”Richard Stallman”. Encyclopedia Britannica, 4 Nov. 2022, [https://www.britannica.com/biography/](https://www.britannica.com/biography/) Richard-Stallman. Accessed January 17, 2023.
+[^3] Hosch, William L.. ”Richard Stallman”. Encyclopedia Britannica, 4 Nov. 2022, https://www.britannica.com/biography/Richard-Stallman. Accessed January 17, 2023.
 
 [^4] Free Software Foundation. ”GNU operating system”. Free Software Foundation. n.d. Web. https://www.gnu.org/gnu/the-gnu-project.html. Accessed January 17, 2023.
 
