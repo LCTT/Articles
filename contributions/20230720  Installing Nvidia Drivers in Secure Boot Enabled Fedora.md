@@ -130,7 +130,7 @@ nvidia              62517248  118 nvidia_uvm,nvidia_modeset
 video                  73728  3 asus_wmi,i915,nvidia_modeset
 ```
 
-现在，你可以愉快的在开启安全启动的情况下使用 Nvidia 显卡了。
+现在，你可以愉快的在开启安全启动的情况下使用英伟达显卡了。
 
 希望本文能够帮助到你。
 
