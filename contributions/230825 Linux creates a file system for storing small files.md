@@ -1,4 +1,6 @@
 
+![](../images 230825 Linux creates a file system for storing small files.jpg)
+
 今天群里一朋友遇到这样一个问题，明明硬盘只用了 30% 左右的空间，但是却无法写入文件，使用 `df -iT` 命令查看文件系统使用情况时，发现根目录的 inode 使用率确竟然是 100%，后来通过聊天得知，原来他的服务器主要用于存储 1KB 左右的小文件，这一下就破案了
 
 inode 主要用来记录文件的属性，及此文件的数据所在的 block 编号，一个文件占用一个 inode，因此如果都是小文件的话，那么是存储不到多少文件就会把 inode 耗尽，出现文件系统明明还有很大的空闲空间，但无法写入文件的情况
@@ -76,4 +78,3 @@ via: http://www.yanjun.pro/?p=128
 编辑：[wxy](https://github.com/wxy)
 
 本文由贡献者投稿至 [Linux 中国公开投稿计划](https://github.com/LCTT/Articles/)，采用 [CC-BY-SA 协议](https://creativecommons.org/licenses/by-sa/4.0/deed.zh) 发布，[Linux中国](https://linux.cn/) 荣誉推出
-
