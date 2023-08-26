@@ -1,5 +1,5 @@
 
-![](../images 230825 Linux creates a file system for storing small files.jpg)
+![](images 230825 Linux creates a file system for storing small files.jpg)
 
 今天群里一朋友遇到这样一个问题，明明硬盘只用了 30% 左右的空间，但是却无法写入文件，使用 `df -iT` 命令查看文件系统使用情况时，发现根目录的 inode 使用率确竟然是 100%，后来通过聊天得知，原来他的服务器主要用于存储 1KB 左右的小文件，这一下就破案了
 
