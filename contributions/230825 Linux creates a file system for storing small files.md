@@ -1,4 +1,3 @@
-![][1]
 
 今天群里一朋友遇到这样一个问题，明明硬盘只用了 30% 左右的空间，但是却无法写入文件，使用 `df -iT` 命令查看文件系统使用情况时，发现根目录的 inode 使用率确竟然是 100%，后来通过聊天得知，原来他的服务器主要用于存储 1KB 左右的小文件，这一下就破案了
 
@@ -78,4 +77,3 @@ via: http://www.yanjun.pro/?p=128
 
 本文由贡献者投稿至 [Linux 中国公开投稿计划](https://github.com/LCTT/Articles/)，采用 [CC-BY-SA 协议](https://creativecommons.org/licenses/by-sa/4.0/deed.zh) 发布，[Linux中国](https://linux.cn/) 荣誉推出
 
-[1]: images/head.jpg
